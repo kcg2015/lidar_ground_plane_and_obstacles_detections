@@ -135,6 +135,16 @@ def get_cluster_box_list(cluster_indices, cloud_obsts):
 
 
 def box_center(box):
+    """
+    Calculate the centroid of a 3D bounding box
+    Input: box, a 3-by-8 matrix, each coloum represents the xyz coordinate of a corner of the box
+           (e.g.  
+           array([[42.62581635, 46.09998703, 46.09998703, 42.62581635, 42.62581635, 46.09998703, 46.09998703, 42.62581635],
+                  [2.64766479,  2.64766479,  4.64661026,  4.64661026,  2.64766479, 2.64766479,  4.64661026,  4.64661026],
+                  [0.10515476,  0.10515476,  0.10515476,  0.10515476,  1.98793995, 1.98793995,  1.98793995,  1.98793995]])
+           )
+    Output: the centroid of the box in 3D [x_cent, y_cent, z_cent]
+    """
     x_min, x_max = min(box[0]), max(box[0])
     y_min, y_max = min(box[1]), max(box[1])
     z_min, z_max = min(box[2]), max(box[2])
