@@ -65,3 +65,31 @@ def roi_filter(cloud, x_roi, y_roi, z_roi):
     cloud_roi_filtered =clipper.filter()
     return cloud_roi_filtered
 ```
+
+### Plane Segmentation
+
+RANSAC stands for Random Sample Consensus, and is a method for detecting outliers in data. RANSAC runs for a max number of iterations, and returns the model with the best fit. Each iteration randomly picks a subsample of the data and fits a model through it, such as a line or a plane. Then the iteration with the highest number of inliers or the lowest noise is used as the best model.
+There are two key parameters for plane segmentation, a distance threshold and maximal number of iteration. The points whose distances to the fitted plane are with in the distance threshold are counted as inliers. After a maximal number of iteration, the iteration that has the highest number of inliers is then the has the best fit. 
+
+
+```
+def plane_segmentation(cloud, dist_thold, max_iter):
+    """
+    Input parameters:
+        cloud: Input cloud
+        dist_thold: distance threshold
+        max_iter: maximal number of iteration
+    Output:
+        indices: list of indices of the PCL points that belongs to the plane
+        coefficient: the coefficients of the plane-fitting (e.g., [a, b, c, d] for ax + by +cz + d =0)
+    """
+    seg = cloud.make_segmenter_normals(ksearch=50)# For simplicity,hard coded
+    seg.set_optimize_coefficients(True)
+    seg.set_model_type(pcl.SACMODEL_NORMAL_PLANE)
+    seg.set_method_type(pcl.SAC_RANSAC)
+    seg.set_distance_threshold(dist_thold)
+    seg.set_max_iterations(max_iter)
+    indices, coefficients = seg.segment()
+    return indices, coefficients
+
+```
