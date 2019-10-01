@@ -93,3 +93,28 @@ def plane_segmentation(cloud, dist_thold, max_iter):
     return indices, coefficients
 
 ```
+### Obstacle Clustering
+
+We have three key parameters: tolerance, minimal number of points to form a cluster, and maximal number of points to form a cluster. Tolerance is the radius of search sphere specifiec for a given cloud point (this torlerance is normally the same for each cloud point). Note that choosing an appropriate value for tolerance is crucial. If tolerance is set to be too small, an actual object could  be seen as multiple clusters. On the other hand, the value is set to be too high, multiple objects could be seen as a single cluster. 
+
+```
+def clustering(cloud, tol, min_size, max_size):
+    """
+    Input parameters:
+        cloud: Input cloud
+        tol: tolerance
+        min_size: minimal number of points to form a cluster
+        max_size: maximal number of points that a cluster allows 
+    Output:
+        cluster_indices: a list of list. Each element list contains the indices of the points that belongs to
+                         the same cluster
+    """
+    tree = cloud.make_kdtree()
+    ec = cloud.make_EuclideanClusterExtraction()
+    ec.set_ClusterTolerance(tol)
+    ec.set_MinClusterSize(min_size)
+    ec.set_MaxClusterSize(max_size)
+    ec.set_SearchMethod(tree)
+    cluster_indices = ec.Extract()
+    return cluster_indices
+```
