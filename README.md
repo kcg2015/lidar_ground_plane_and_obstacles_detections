@@ -1,7 +1,10 @@
 # lidar_ground_plane_and_obstacles_detections
 This repo includes Python and C++ implementations/examples that show how to process 3-D Lidar data by segmenting the ground plane and finding obstacles. 
+
 ![img](Python/figs/result_XY.gif)
-The repo also includes example of using segementation and clustering results for vehicle tracking.
+
+The repo also includes examples of using segementation and clustering results for vehicle tracking.
+
 ![img](Python/figs/lidar_2D_tracking.gif)
 
 For the Python implementation, I use strawlab/python-pcl (https://github.com/strawlab/python-pcl), a small python binding to the point cloud library (PCL). As of August 2019, the majority of the wrapped APIs only work with `PointXYZ` point type. If the point type is of the format of `PointXYZI`, simple conversion is required, as shown in the following example.
