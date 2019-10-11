@@ -3,9 +3,13 @@ This repo includes Python and C++ implementations/examples that show how to proc
 
 ![img](Python/figs/result_XY.gif)
 
-The repo also includes examples of using segementation and clustering results for vehicle tracking.
+The repo also includes examples of using segementation and clustering results, in combination with Kalman Filters (KF) for vehicle tracking applications, as shown in the following animation.
 
 ![img](Python/figs/lidar_2D_tracking.gif)
+
+## Python Implementation
+
+### Libraries and Files
 
 For the Python implementation, I use strawlab/python-pcl (https://github.com/strawlab/python-pcl), a small python binding to the point cloud library (PCL). As of August 2019, the majority of the wrapped APIs only work with `PointXYZ` point type. If the point type is of the format of `PointXYZI`, simple conversion is required, as shown in the following example.
 
