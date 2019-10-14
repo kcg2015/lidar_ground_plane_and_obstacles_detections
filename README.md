@@ -24,7 +24,7 @@ cloud_XYZ.from_array(cloud_np[:, 0:3])
 #### Voxel Grid
 Voxel grid filtering will create a cubic grid and will filter the cloud by only leaving a single point per voxel cube, so the larger the cube length the lower the resolution of the point cloud.
 
-The key parameters of voxel grid filtering is the leaf size.
+The key parameters of voxel grid filtering is the `leaf size`.
 
 ```
 def voxel_filter(cloud, leaf_size):
@@ -44,11 +44,11 @@ def voxel_filter(cloud, leaf_size):
 
 ```
 
-Here, a `cloud.make_voxel_grid_filter()` filter is created with a leaf size specified by `leaf_size', the input data is passed, and the output is computed and stored in cloud_filtered.
+Here, a `cloud.make_voxel_grid_filter()` filter is created with a leaf size specified by `leaf_size', the input data is passed and the output is computed and stored in cloud_filtered.
 
 #### Region of Interest (ROI)
 
-First a 3D box is specified. Any points outside that box are filtered out. 
+First a 3D ROI box is specified. Any points outside that box are filtered out. 
 
 ```
 def roi_filter(cloud, x_roi, y_roi, z_roi):
@@ -74,7 +74,8 @@ def roi_filter(cloud, x_roi, y_roi, z_roi):
 
 ### Plane Segmentation
 
-RANSAC stands for Random Sample Consensus, and is a method for detecting outliers in data. RANSAC runs for a max number of iterations, and returns the model with the best fit. Each iteration randomly picks a subsample of the data and fits a model through it, such as a line or a plane. Then the iteration with the highest number of inliers or the lowest noise is used as the best model.
+We will use RANSAC for plane segmentation. RANSAC stands for Random Sample Consensus, and is a method for detecting outliers in data. RANSAC runs for a max number of iterations, and returns the model with the best fit. Each iteration randomly picks a subsample of the data and fits a model through it, such as a line or a plane. Then the iteration with the highest number of inliers or the lowest noise is used as the best model.
+
 There are two key parameters for plane segmentation, a distance threshold and maximal number of iteration. The points whose distances to the fitted plane are with in the distance threshold are counted as inliers. After a maximal number of iteration, the iteration that has the highest number of inliers is then the has the best fit. 
 
 
