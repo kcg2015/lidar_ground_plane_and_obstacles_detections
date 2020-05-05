@@ -102,7 +102,7 @@ def plane_segmentation(cloud, dist_thold, max_iter):
 ```
 ### Obstacle Clustering
 
-We have three key parameters: tolerance, minimal number of points to form a cluster, and maximal number of points to form a cluster. Tolerance is the radius of search sphere specifiec for a given cloud point (this torlerance is normally the same for each cloud point). Note that choosing an appropriate value for tolerance is crucial. If tolerance is set to be too small, an actual object could  be seen as multiple clusters. On the other hand, the value is set to be too high, multiple objects could be seen as a single cluster. 
+We have three key parameters: tolerance, minimal number of points to form a cluster, and maximal number of points to form a cluster. Tolerance is the radius of search sphere specifiec for a given cloud point (this torlerance is normally the same for each cloud point). Note that choosing an appropriate value for tolerance is crucial. If tolerance is set to be too small, an actual object could  be seen as multiple clusters. On the other hand, if the value is set to be too high, multiple objects could be treated as a single cluster by the algorithm. 
 
 ```
 def clustering(cloud, tol, min_size, max_size):
