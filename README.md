@@ -1,5 +1,5 @@
 # lidar_ground_plane_and_obstacles_detections
-This repo includes Python and C++ implementations/examples that show how to process 3-D Lidar data by segmenting the ground plane and finding obstacles. 
+This repo includes Python and C++ implementations/examples that show how to process 3-D LIDAR data by segmenting the ground plane and finding obstacles. 
 
 ![img](Python/figs/result_XY.gif)
 
@@ -8,6 +8,15 @@ The repo also includes examples of using segementation and clustering results, i
 ![img](Python/figs/lidar_2D_tracking.gif)
 
 ## Python Implementation
+
+Files related to Python Implementation:
+
+* lidar_segementation_detection.ipynb - the main file that implements LIDAR data processing
+* pcl_processing.py - LIDAR processing script
+* lidar_2D_tracking.ipynb - multi-object tracking based on LIDAR measurement
+* Kd_tree_simple.ipynb - A simple implementation of Kd tree
+* pca_bounding_box.ipynb - A simple implementation of 2D oriented bounding box (OBB) 
+
 
 ### Libraries and Files
 
